@@ -1,0 +1,68 @@
+---
+title: 'Logistic Regression: Math behind the Model explained with Python and maths formulas'
+date: '2023-10-31'
+tags: ['Machine Learning', 'Python', 'Logistic Regression', 'Regression']
+draft: true
+summary: 'Logistic Regression is a classification algorithm. It is used to predict a binary outcome (1 / 0, Yes / No, True / False) given a set of independent variables. To represent binary / categorical outcome, we use dummy variables. In this post, I will explain the math behind the Logistic Regression Model and how to implement it using Python.'
+---
+
+## Introduction
+
+In this post, I will explain the math behind the Logistic Regression Model and how to implement it using Python with interesting story and examples. Also, I explain how to train the model and how to evaluate it.  
+
+## Explaining Logistic Regression with Sweet Shops
+
+One day, my dear friend Manoj was struggling to understand logistic regression. As we sat down for some chai and samosas, he asked, "Why is it called logistic regression?"
+
+I replied, "Let me tell you a story. Imagine there is a village with two sweet shops: Gulab Jamun Wala and Rasgulla Wala. The choice of which sweet shop people go to depends on various factors. Let's define the probabilities as follows:
+
+- The probability of going to Gulab Jamun Wala is `P(G)`.
+- The probability of going to Rasgulla Wala is `P(R)`.
+
+We know that the sum of these probabilities must equal 1:
+
+<div style={{ textAlign: 'center' }}>
+    $P(G) + P(R) = 1$
+</div>
+
+Now, consider the factors influencing people's choices. Some may prefer gulab jamun over rasgulla `X_1`, some may live closer to one shop `X_2`, and the shop owners might offer discounts and promotions `X_3`. We can represent these factors as:
+
+- `X_1` = Preference
+- `X_2` = Location
+- `X_3` = Discount
+
+We can model this scenario using logistic regression, with the dependent variable `Y`, which can take two values:
+
+- `Y = 1` if they choose Gulab Jamun Wala
+- `Y = 0` if they choose Rasgulla Wala
+
+Logistic regression provides us with the probability of a customer choosing Gulab Jamun Wala, which lies between 0 and 1:
+
+<div style={{ textAlign: 'center' }}>
+    $0 \leq P(Y=1) \leq 1$
+
+    $0 \leq P(Y=0) \leq 1$
+</div>
+
+We can represent this as:
+
+<div style={{ textAlign: 'center' }}>
+</div>
+
+The logistic function, also known as the logit function, transforms this probability into log-odds, which can take any real value:
+
+{/* \[
+\text{logit}(P(Y)) = \log\left(\frac{P(Y)}{1-P(Y)}\right)
+\] */}
+
+We then fit a linear regression model to the logit values:
+
+{/* \[
+\text{logit}(P(Y)) = B_0 + B_1 \cdot X_1 + B_2 \cdot X_2 + B_3 \cdot X_3
+\] */}
+
+So, logistic regression gets its name because it uses the logit function to model probabilities, and we perform regression on the logit values. Simple, isn't it?"
+
+Rahul smiled and said, "Arey waah. Now I understand! You explained it so well through this sweet shop example. Logistic regression is not so confusing after all."
+
+I was delighted that I could help my friend grasp the concept of logistic regression by combining a real-world analogy with mathematical equations.
