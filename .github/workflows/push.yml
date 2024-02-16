@@ -1,0 +1,16 @@
+name: Trigger Main Repository Update
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to trigger on
+
+jobs:
+  notify_main_repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Main Repository Update
+        uses: ad-m/github-push-action@master
+        with:
+          branch: main  # or the branch you want to trigger on
+          github_token: ${{ secrets.GIT_TOKEN }}
