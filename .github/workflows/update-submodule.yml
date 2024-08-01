@@ -1,0 +1,37 @@
+name: Update Submodule in Codercops Site
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch name if it's different
+
+jobs:
+  update-submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codercops Site Repo
+        uses: actions/checkout@v3
+        with:
+          repository: your-username/codercops-site  # Replace with your GitHub username and repo name
+          token: ${{ secrets.GIT_TOKEN }}
+          path: codercops-site
+
+      - name: Checkout Codercops Content Repo
+        uses: actions/checkout@v3
+        with:
+          path: codercops-content
+
+      - name: Get Latest Commit Hash
+        id: get_hash
+        run: |
+          cd codercops-content
+          echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+      - name: Update Submodule
+        run: |
+          cd codercops-site
+          git submodule update --remote --merge
+          git add .
+          git commit -m "Update submodule to codercops-content commit ${{ env.commit_hash }}"
+          git push origin main  # Change to your branch name if needed
