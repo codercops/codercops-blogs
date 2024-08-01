@@ -33,7 +33,7 @@ jobs:
       - name: Update Submodule
         run: |
           cd codercops-site
-          git submodule update --remote --merge
+          git submodule update --remote 
           git status
           if [ -n "$(git status --porcelain)" ]; then
             git add path-to-content  # Ensure you add the submodule path specifically
