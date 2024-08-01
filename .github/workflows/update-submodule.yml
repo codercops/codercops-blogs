@@ -28,6 +28,11 @@ jobs:
           cd codercops-content
           echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+      - name: Configure Git
+        run: |
+          git config --global user.email ${{ secrets.PERSONAL_EMAIL }}  # Replace with your email
+          git config --global user.name "anurag629"  # Replace with your name
+
       - name: Update Submodule
         run: |
           cd codercops-site
