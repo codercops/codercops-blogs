@@ -35,7 +35,6 @@ jobs:
 
       - name: Update Submodule
         run: |
-          cd codercops-site
           git submodule update --remote 
           git add .  # Ensure you add the submodule path specifically
           git commit -m "Update submodule to codercops-blogs commit ${{ env.commit_hash }}"
