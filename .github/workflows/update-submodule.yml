@@ -37,6 +37,11 @@ jobs:
         run: |
           cd codercops-site
           git submodule update --remote --merge
-          git add .
-          git commit -m "Update submodule to codercops-content commit ${{ env.commit_hash }}"
-          git push origin main  # Change to your branch name if needed
+          git status
+          if [ -n "$(git status --porcelain)" ]; then
+            git add path-to-content  # Ensure you add the submodule path specifically
+            git commit -m "Update submodule to codercops-blogs commit ${{ env.commit_hash }}"
+            git push origin main  # Change to your branch name if needed
+          else
+            echo "Submodule is already up to date."
+          fi
