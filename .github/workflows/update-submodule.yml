@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codercops Site Repo
+      - name: Checkout codercops-site Repo
         uses: actions/checkout@v3
         with:
-          repository: your-username/codercops-site  # Replace with your GitHub username and repo name
+          repository: anurag629/codercops-site  # Replace with your GitHub username and repo name
           token: ${{ secrets.GIT_TOKEN }}
           path: codercops-site
 
